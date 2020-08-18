@@ -19,7 +19,7 @@
 /* We are compiling a Cilk source with a Cilk compiler */
 
 
-#include <cilk/cilk.h>
+#include <cilk.h>
 #include <cilk-lib.h>
 
 #define taucs_cilk   cilk
@@ -790,7 +790,6 @@ extern int genmmd_(int*, int*, int*, int*, int*, int*, int*, int*, int*,
 #elif defined(OSTYPE_win32)
 
 #include <float.h>
-
 #define isnan(x)  (_isnan(x))
 #define isinf(x)  (!(_finite(x)) && !(_isnan(x)))
 #define finite(x) (_finite(x))
@@ -803,15 +802,13 @@ extern int genmmd_(int*, int*, int*, int*, int*, int*, int*, int*, int*,
 /* gcc 3.3.1                                                   */
 
 #ifndef isnan
-// Runia, 2019-04: line disabled because compiler error
-//extern int isnan(double);
+extern int isnan(double);
 #endif
 #ifndef finite
 extern int finite(double);
 #endif
 #ifndef isinf
-// Runia, 2019-04: line disabled because compiler error
-//extern int isinf(double);
+extern int isinf(double);
 #endif
 
 extern int taucs_potrf(char*, int*, taucs_datatype*, int*, int*);

@@ -1,12 +1,9 @@
 .PHONY: all clean clean-subdirs
 
-# Runia (2019-03) | Originally:
-#	all: lib/libalglib.a lib/libjson.a lib/libtaucs.a
-# But libjson can all be installed using apt-get
-all: lib/libalglib.a lib/libtaucs.a
+all: lib/libalglib.a lib/libjson.a lib/libtaucs.a
 
 lib/libalglib.a:
-	cd alglib/cpp/src && g++ -c *.cpp && ar rcs libalglib.a *.o
+	cd alglib/cpp/src && g++ -c -fPIC *.cpp && ar rcs libalglib.a *.o
 	mkdir -p include/alglib/ lib/
 	cp alglib/cpp/src/*.h include/alglib/
 	cp alglib/cpp/src/libalglib.a lib/

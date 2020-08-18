@@ -38,7 +38,6 @@ using namespace std;
 extern void debug (const vector<string> &args);
 
 int main (int argc, char **argv) {
-
     struct Action {
         string name;
         void (*run) (const vector<string> &args);
@@ -57,13 +56,8 @@ int main (int argc, char **argv) {
     int nactions = sizeof(actions)/sizeof(Action);
     string name = (argc <= 1) ? "" : argv[1];
     vector<string> args;
-
     for (int a = 2; a < argc; a++)
-    {
-        // stuff after the action
-        args.push_back(argv[a]);   
-    }
-
+        args.push_back(argv[a]);
     for (int i = 0; i < nactions; i++) {
         if (name == actions[i].name) {
             actions[i].run(args);
